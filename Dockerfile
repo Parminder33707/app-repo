@@ -1,7 +1,6 @@
-FROM node:18-alpine
+FROM python:3.12-slim
 WORKDIR /app
-COPY package*.json ./
-RUN npm install --silent
 COPY . .
-EXPOSE 8080
-CMD ["node", "server.js"]
+RUN pip install -r requirements.txt
+EXPOSE 5000
+CMD ["python", "app.py"]
