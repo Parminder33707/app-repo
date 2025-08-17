@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-workouts = []//simple storage
+workouts = []
 
 @app.route('/log_workout', methods=['POST'])
 def log_workout():
@@ -18,3 +18,4 @@ def get_workouts():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
+print("Test trigger with correct username")
