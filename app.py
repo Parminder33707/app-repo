@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-workouts = []//test
+workouts = []//simple storage
 
 @app.route('/log_workout', methods=['POST'])
 def log_workout():
