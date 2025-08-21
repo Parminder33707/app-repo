@@ -1,21 +1,17 @@
-from flask import Flask, request, jsonify
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
-workouts = []
+@app.route("/")
+def home():
+    return "Hello from the Fitness App (CI/CD demo)!"
 
-@app.route('/log_workout', methods=['POST'])
-def log_workout():
-    data = request.json
-    if data:
-        workouts.append(data)
-        return jsonify({"message": "Workout logged!", "data": data}), 201
-    return jsonify({"error": "No data"}), 400
+@app.route("/health")
+def health():
+    return jsonify(status="UP"), 200
 
-@app.route('/get_workouts', methods=['GET'])
-def get_workouts():
-    return jsonify(workouts)
+if __name__ == "__main__":
+    # Bind to 0.0.0.0 so container exposes it
+    app.run(host="0.0.0.0", port=5000)
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
 
